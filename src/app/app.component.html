@@ -1,13 +1,12 @@
 <h2>{{title}}</h2>
 
-<div class="produtos">
-  <div *ngFor="let produto of produtos">
-    <caption>{{produto.getNome()}}</caption>
-    <sub>{{produto.getValor()}}</sub>
-    <button (click)="adicionaCarrinho(produto)">Comprar</button>
-    <hr>
-  </div>
+
+<div *ngFor="let produto of produtos"  class="produtos">
+  <span class="nomeprod"><b>{{produto.getNome()}}</b></span><br>
+  <sub class="preco">{{produto.getValor()}}</sub>
+  <button class="comprar" (click)="adicionaCarrinho(produto)">Comprar</button>
 </div>
+
 
 <br>
 <h2>Carrinho</h2>
@@ -24,5 +23,6 @@
       <td>{{produto.getValor()}}</td>
     </tr>
   </table>
-  <span *ngIf="total>0">Total da Compra <b>{{total}}</b></span>
+  <br>  
+  <span *ngIf="total>0">Total da Compra <b id="total">{{total}}</b></span>
 </div>
