@@ -17,7 +17,7 @@ export class AppComponent {
       this.carrinho.push(this.produtos[this.produtos.indexOf(produto)]);
     } else {
       if(this.existe(produto)) {
-        console.log("already in!")
+        this.carrinhoIncrementa(produto);
       } else {
         this.carrinho.push(this.produtos[this.produtos.indexOf(produto)]);
       }
@@ -26,6 +26,14 @@ export class AppComponent {
 
   existe(pd) { // check if object already exists
     return this.carrinho.some(produto => produto.getNome() === pd.getNome());
+  }
+
+  carrinhoIncrementa(pd) {
+    this.carrinho.some(produto => {
+      if(produto.getNome() === pd.getNome()) {
+        produto.plusQtd();
+      }
+    });
   }
 
 }
@@ -52,5 +60,9 @@ export class Produto {
 
   getQtd() {
     return this.qtd;
+  }
+
+  plusQtd() {
+    this.qtd += 1;
   }
 }
