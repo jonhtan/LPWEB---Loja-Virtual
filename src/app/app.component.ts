@@ -8,9 +8,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'loja virtual';
 
-  produtos = [new Produto("Teclado", 150.00, 1), new Produto("Mouse", 56.00, 1)];
+  produtos = [new Produto("Teclado Gamer", 450.00, 1), new Produto("Mouse Gamer", 126.00, 1)];
 
   carrinho = [];
+
+  total = 0;
 
   adicionaCarrinho(produto) {
     if (this.carrinho.length==0) {
@@ -22,6 +24,7 @@ export class AppComponent {
         this.carrinho.push(this.produtos[this.produtos.indexOf(produto)]);
       }
     }
+    this.totalCompra();
   }
 
   existe(pd) { // check if object already exists
@@ -34,6 +37,14 @@ export class AppComponent {
         produto.plusQtd();
       }
     });
+  }
+
+  totalCompra() {
+    if(this.carrinho.length>1) {
+      this.total = this.carrinho[0].getValor() * this.carrinho[0].getQtd() + this.carrinho[1].getValor() * this.carrinho[1].getQtd();
+    } else {
+      this.total = this.carrinho[0].getValor() * this.carrinho[0].getQtd();
+    }
   }
 
 }
