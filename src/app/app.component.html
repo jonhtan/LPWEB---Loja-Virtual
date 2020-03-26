@@ -3,7 +3,7 @@
 
 <div *ngFor="let produto of produtos"  class="produtos">
   <span class="nomeprod"><b>{{produto.getNome()}}</b></span><br>
-  <sub class="preco">{{produto.getValor()}}</sub>
+  <sub class="preco">R$ {{produto.getValor()}}</sub>
   <button class="comprar" (click)="adicionaCarrinho(produto)">Comprar</button>
 </div>
 
